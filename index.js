@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 dotenv.config({path: './.env'})
+const path = require('path')
 const app = express()
 const instamojo = require('instamojo-nodejs')
 
@@ -11,6 +12,7 @@ const API_KEY = process.env.API_KEY
 const AUTH_KEY = process.env.AUTH_KEY
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+
 
 instamojo.setKeys(API_KEY, AUTH_KEY)
 instamojo.isSandboxMode(true)
