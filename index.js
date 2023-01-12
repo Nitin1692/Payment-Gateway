@@ -12,6 +12,7 @@ const API_KEY = process.env.API_KEY
 const AUTH_KEY = process.env.AUTH_KEY
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname, 'public')))
 
 
 instamojo.setKeys(API_KEY, AUTH_KEY)
@@ -25,9 +26,6 @@ app.post('/pay', (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
     var amount = req.body.amount;
-    console.log(name)
-    console.log(email)
-    console.log(amount)
     var data = new instamojo.PaymentData();
     const REDIRECT_URL = "http://localhost:4500/success"
     data.setRedirectUrl(REDIRECT_URL)
